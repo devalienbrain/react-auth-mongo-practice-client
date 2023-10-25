@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { ToastContainer } from "react-toastify";
+import { FiSun } from "react-icons/fi";
+import { MdDarkMode } from "react-icons/md";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -103,10 +105,17 @@ const NavBar = () => {
             </div>
           )}
         </div>
-        <button
-          onClick={toggleTheme}
-          className="ml-2 rounded-full w-7 h-7 border text-xs bg-black"
-        ></button>
+        {currentTheme === "light" ? (
+          <MdDarkMode
+            onClick={toggleTheme}
+            className="ml-2 rounded-full w-5 h-5 text-xs"
+          ></MdDarkMode>
+        ) : (
+          <FiSun
+            onClick={toggleTheme}
+            className="ml-2 rounded-full w-5 h-5 text-xs"
+          ></FiSun>
+        )}
       </div>
     </>
   );
