@@ -29,25 +29,34 @@ const NavBar = () => {
     navigate("/");
   };
 
-  const [currentTheme, setCurrentTheme] = useState("light");
+  const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
     const html = document.documentElement;
-    const newTheme = currentTheme === "light" ? "dark" : "light";
-    setCurrentTheme(newTheme);
-    html.setAttribute("data-theme", newTheme);
-    html.classList.remove(currentTheme);
-    html.classList.add(newTheme);
-    localStorage.setItem("currentTheme", JSON.stringify(newTheme));
+    if (theme === "light") {
+      html.setAttribute("data-theme", "dark");
+      html.classList.remove("light");
+      html.classList.add("dark");
+      setTheme("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.setAttribute("data-theme", "light");
+      html.classList.remove("dark");
+      html.classList.add("light");
+      setTheme("light");
+      localStorage.setItem("theme", "light");
+    }
+    console.log("Previous Theme:", theme);
   };
 
   useEffect(() => {
-    const currentTheme =
-      JSON.parse(localStorage.getItem("currentTheme")) || "light";
-    setCurrentTheme(currentTheme);
+    const localStorageTheme = localStorage.getItem("theme") || "light";
+    setTheme(localStorageTheme);
     const html = document.documentElement;
-    html.classList.add(currentTheme);
-  }, [currentTheme]);
+    html.setAttribute("data-theme", localStorageTheme);
+    html.classList.add(localStorageTheme);
+    console.log("Local Storage Theme:", localStorageTheme);
+  }, []);
 
   return (
     <>
@@ -105,7 +114,7 @@ const NavBar = () => {
             </div>
           )}
         </div>
-        {currentTheme === "light" ? (
+        {theme === "light" ? (
           <MdDarkMode
             onClick={toggleTheme}
             className="ml-2 rounded-full w-5 h-5 text-xs"
