@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -12,11 +12,7 @@ const NavBar = () => {
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "border px-2 py-1 border-black rounded-md"
-              : "border px-2 py-1 border-white rounded-md"
+            isPending ? "pending" : isActive ? "text-red-800 font-black" : ""
           }
         >
           Home
@@ -31,10 +27,30 @@ const NavBar = () => {
     navigate("/");
   };
 
+  const [currentTheme, setCurrentTheme] = useState("light");
+
+  const toggleTheme = () => {
+    const html = document.documentElement;
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setCurrentTheme(newTheme);
+    html.setAttribute("data-theme", newTheme);
+    html.classList.remove(currentTheme);
+    html.classList.add(newTheme);
+    localStorage.setItem("currentTheme", JSON.stringify(newTheme));
+  };
+
+  useEffect(() => {
+    const currentTheme =
+      JSON.parse(localStorage.getItem("currentTheme")) || "light";
+    setCurrentTheme(currentTheme);
+    const html = document.documentElement;
+    html.classList.add(currentTheme);
+  }, [currentTheme]);
+
   return (
     <>
       <ToastContainer></ToastContainer>
-      <div className="navbar font-bold border-b-2 drop-shadow-2xl">
+      <div className="navbar font-bold border-b-2 drop-shadow-2xl z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -55,46 +71,42 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] py-2 shadow bg-base-100 rounded-box w-52"
             >
               {links}
             </ul>
           </div>
+          <span className="normal-case text-xl">HudaHudi</span>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
           {user ? (
-            <div className="flex items-center">
-              <span>{user?.displayName}</span>
+            <div
+              onClick={handleSignOut}
+              className="flex justify-end items-center text-xs drop-shadow-2xl hover:text-red-700"
+            >
               <img
-                className="ml-3 w-8 rounded-full"
+                className="mr-1 w-5 rounded-full border border-white"
                 src={user?.photoURL}
-                alt=""
               />
-              <button
-                onClick={handleSignOut}
-                className="ml-3 px-4 py-2 font-semibold bg-red-600 text-white hover:bg-red-500 drop-shadow-xl"
-              >
-                Sign Out
-              </button>
+              <span>{user?.displayName}</span>
             </div>
           ) : (
-            <div>
+            <div className="text-xs">
               <Link to="/login">
-                <button className="px-4 py-2 border border-black hover:text-white hover:bg-slate-800 drop-shadow-lg rounded-md">
+                <button className="px-2 py-1 border border-black hover:text-white hover:bg-slate-800 drop-shadow-lg rounded-md">
                   Login
-                </button>
-              </Link>
-              <Link to="/register">
-                <button className="ml-3 px-4 py-2 bg-black text-white hover:bg-slate-800 drop-shadow-xl rounded-md">
-                  Register
                 </button>
               </Link>
             </div>
           )}
         </div>
+        <button
+          onClick={toggleTheme}
+          className="ml-2 rounded-full w-7 h-7 border text-xs bg-black"
+        ></button>
       </div>
     </>
   );
