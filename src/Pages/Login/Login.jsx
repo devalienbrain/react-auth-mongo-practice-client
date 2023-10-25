@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -52,27 +53,47 @@ const Login = () => {
   return (
     <>
       <ToastContainer></ToastContainer>
-      <div className="hero min-h-screen bg-base-200 p-5">
+      <div className="hero min-h-screen bg-base-200 py-10 px-5">
         <div className="hero-content flex-col">
           <h2 className="text-2xl font-black">Please Login</h2>
 
-          <div className="card w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card w-full shadow-2xl bg-base-100 py-9">
             <form
               onSubmit={handleLogin}
-              className="flex flex-col gap-4 px-5 py-9"
+              className="flex flex-col gap-4 px-5 py-5"
             >
+              <div className="mx-auto font-semibold text-center w-full border-black text-black rounded-lg">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg border-black hover:bg-black hover:text-white"
+                >
+                  <FaGithub></FaGithub>
+                  Login with Github
+                </button>
+              </div>
+              <div className="mx-auto font-semibold text-center w-full border-blue-900 text-blue-950 rounded-lg">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg border-blue-900 hover:bg-blue-900 hover:text-white"
+                >
+                  <FcGoogle></FcGoogle>
+                  Login with Google
+                </button>
+              </div>
+              <h2 className="text-center text-blue-950">Or,</h2>
+              <h2 className="text-xs font-black">Login with exisiting email</h2>
               <input
                 type="email"
                 name="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
               <div>
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="password"
-                  className="input input-bordered"
+                  className="input input-bordered w-full"
                 />
                 <span
                   onClick={handlePasswordVisibility}
@@ -96,17 +117,6 @@ const Login = () => {
               Not register before?{" "}
               <Link to="/register"> please register first </Link>
             </p>
-            <h2 className="text-center text-blue-950">Or,</h2>
-
-            <div className="mx-auto py-5 font-semibold text-center text-white">
-              <button
-                onClick={handleGoogleLogin}
-                className="px-4 py-2 border bg-blue-950 hover:bg-blue-900 font-bold rounded-md flex items-center gap-3"
-              >
-                <FcGoogle></FcGoogle>
-                Login with Google
-              </button>
-            </div>
           </div>
         </div>
       </div>

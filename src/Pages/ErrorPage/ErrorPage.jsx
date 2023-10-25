@@ -4,7 +4,7 @@ const ErrorPage = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-start space-y-11">
       <h2 className="text-4xl font-black ">Oops.. </h2>
-      <h1 className="text-5xl text-red-600 font-bold">
+      <h1 className="text-3xl text-red-700 font-bold">
         ERROR 404! Page Not Found.
       </h1>
       <Link

@@ -70,7 +70,7 @@ const Register = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <h2 className=" text-2xl font-black">Please Register First</h2>
-          <div className="card w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card w-full max-w-sm shadow-2xl bg-base-100 border border-green-800">
             <form
               onSubmit={handleRegister}
               className="flex flex-col gap-4 px-5 py-9"
@@ -124,7 +124,7 @@ const Register = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn border border-black hover:bg-slate-800 hover:text-white">
+                <button className="btn border bg-green-800 hover:bg-green-700 text-white">
                   Register
                 </button>
               </div>

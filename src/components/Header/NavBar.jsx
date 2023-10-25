@@ -78,7 +78,7 @@ const NavBar = () => {
           </div>
           <span className="normal-case text-xl">HudaHudi</span>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center justify-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
