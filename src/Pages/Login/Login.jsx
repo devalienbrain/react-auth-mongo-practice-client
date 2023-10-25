@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const { signIn, loginGoogle } = useContext(AuthContext);
+  const { signIn, loginGoogle, loginGithub } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
@@ -46,6 +46,15 @@ const Login = () => {
       })
       .catch((err) => console.log(err));
 
+  const handleGithubLogin = () =>
+    loginGithub()
+      .then((res) => {
+        console.log(res.user);
+        toast("WOW! You Are Successfuly Logged In");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((err) => console.log(err));
+
   const handlePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -64,7 +73,7 @@ const Login = () => {
             >
               <div className="mx-auto font-semibold text-center w-full border-black text-black rounded-lg">
                 <button
-                  onClick={handleGoogleLogin}
+                  onClick={handleGithubLogin}
                   className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg border-black hover:bg-black hover:text-white"
                 >
                   <FaGithub></FaGithub>
