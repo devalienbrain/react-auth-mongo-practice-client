@@ -27,7 +27,7 @@ const Login = () => {
     signIn(email, password)
       .then((res) => {
         console.log(res.user);
-        toast("WOW! You Are Successfuly Logged In");
+        toast("You Are Successfuly Logged In");
 
         navigate(location?.state ? location.state : "/");
       })
@@ -41,7 +41,7 @@ const Login = () => {
     loginGoogle()
       .then((res) => {
         console.log(res.user);
-        toast("WOW! You Are Successfuly Logged In");
+        toast("You Are Successfuly Logged In");
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => console.log(err));
@@ -50,7 +50,7 @@ const Login = () => {
     loginGithub()
       .then((res) => {
         console.log(res.user);
-        toast("WOW! You Are Successfuly Logged In");
+        toast("You Are Successfuly Logged In");
         navigate(location?.state ? location.state : "/");
       })
       .catch((err) => console.log(err));
@@ -74,7 +74,7 @@ const Login = () => {
               <div className="mx-auto font-semibold text-center w-full border-black text-black rounded-lg">
                 <button
                   onClick={handleGithubLogin}
-                  className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg border-black hover:bg-black hover:text-white"
+                  className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg hover:bg-white bg-black hover:text-black text-white"
                 >
                   <FaGithub></FaGithub>
                   Login with Github
@@ -83,7 +83,7 @@ const Login = () => {
               <div className="mx-auto font-semibold text-center w-full border-blue-900 text-blue-950 rounded-lg">
                 <button
                   onClick={handleGoogleLogin}
-                  className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg border-blue-900 hover:bg-blue-900 hover:text-white"
+                  className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg border-blue-900 bg-blue-900 hover:text-black text-white"
                 >
                   <FcGoogle></FcGoogle>
                   Login with Google
@@ -122,7 +122,7 @@ const Login = () => {
                 ERROR: {errorMessage}
               </p>
             )}
-            <p className="text-purple-900 text-center text-sm mb-5 px-4">
+            <p className="text-red-900 font-bold text-center text-xs mb-5 px-4">
               Not register before?{" "}
               <Link to="/register"> please register first </Link>
             </p>
