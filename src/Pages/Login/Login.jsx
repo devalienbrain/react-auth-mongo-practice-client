@@ -83,7 +83,7 @@ const Login = () => {
               <div className="mx-auto font-semibold text-center w-full border-blue-900 text-blue-950 rounded-lg">
                 <button
                   onClick={handleGoogleLogin}
-                  className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg border-blue-900 bg-blue-900 hover:text-black text-white"
+                  className="p-3 border font-bold flex items-center gap-3 w-full rounded-lg border-white bg-blue-900 hover:bg-white text-white hover:text-blue-900"
                 >
                   <FcGoogle></FcGoogle>
                   Login with Google

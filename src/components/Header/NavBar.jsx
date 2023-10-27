@@ -14,10 +14,18 @@ const NavBar = () => {
         <NavLink
           to="/"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-red-800 font-black" : ""
+            isPending ? "pending" : isActive ? "text-blue-800 font-black" : ""
           }
         >
           Home
+        </NavLink>
+        <NavLink
+          to="/mycart"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-blue-800 font-black" : ""
+          }
+        >
+          My Cart
         </NavLink>
       </div>
     </>
@@ -87,7 +95,7 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <span className="normal-case text-xl">HudaHudi</span>
+          <span className="normal-case text-xl text-blue-900">HudaHudi</span>
         </div>
         <div className="navbar-center justify-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -107,7 +115,7 @@ const NavBar = () => {
           ) : (
             <div className="text-xs">
               <Link to="/login">
-                <button className="px-2 py-1 border border-black hover:text-white hover:bg-slate-800 drop-shadow-lg rounded-md">
+                <button className="px-2 py-1 border border-blue hover:text-white hover:bg-blue-800 drop-shadow-lg rounded-md">
                   Login
                 </button>
               </Link>

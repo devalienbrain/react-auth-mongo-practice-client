@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "BMW",
+    "image": "https://i.ibb.co/1s87KVc/bmw.jpg"
+  },
+  {
+    "id": 2,
+    "name": "FORD",
+    "image": "https://i.ibb.co/hX6PYD6/ford.jpg"
+  },
+  {
+    "id": 3,
+    "name": "HONDA",
+    "image": "https://i.ibb.co/mbsDS2H/honda.jpg"
+  },
+  {
+    "id": 4,
+    "name": "MERCEDES-BENZ",
+    "image": "https://i.ibb.co/2tNHFd3/mercedes.jpg"
+  },
+  {
+    "id": 5,
+    "name": "TOYOTA",
+    "image": "https://i.ibb.co/J7HVmpW/toyota.jpg"
+  },
+  {
+    "id": 6,
+    "name": "TESLA",
+    "image": "https://i.ibb.co/h1bQRqP/tesla.jpg"
+  }
+]
